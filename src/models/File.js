@@ -21,7 +21,8 @@ const File = new mongoose.Schema(
 // Campo Virtual
 // a função está neste formato e não em arrow function, porque é preciso acessar o this dela
 File.virtual("url").get(function() {
-  return `http://localhost:3333/files/${encodeURIComponent(this.path)}`;
+  const url = process.env.URL || "http://localhost:3333";
+  return `${url}/files/${encodeURIComponent(this.path)}`;
 });
 
 module.exports = mongoose.model("File", File);

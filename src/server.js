@@ -40,4 +40,5 @@ app.use("/files", express.static(path.resolve(__dirname, "..", "tmp")));
 app.use(require("./routes"));
 
 // define a porta do servidor, no caso o 33333
-server.listen(3333);
+// process.env.PORT = variavel ambiente, para ser atualizada dependendo do ambiente que a app está rodando
+server.listen(process.env.PORT || 3333);
